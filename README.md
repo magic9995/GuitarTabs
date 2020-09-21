@@ -1,3 +1,3 @@
 # GuitarTabs
-Docker Image
-\nAfter starting Image, run main.py to start Flask App
+Docker Image  
+After starting Image, run main.py to start Flask App

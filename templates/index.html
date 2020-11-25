@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script language="javascript">
+var inputs = document.querySelectorAll( '.file' );
+Array.prototype.forEach.call( inputs, function( input )
+{
+	var label	 = inputs.nextElementSibling;
+		labelVal = label.innerHTML;
+
+	input.addEventListener( 'change', function( e )
+	{
+		var fileName = '';
+		fileName = e.target.value.split( '\\' ).pop();
+
+		if( fileName )
+			label.querySelector( 'span' ).innerHTML = fileName;
+		else
+			label.innerHTML = labelVal;
+	});
+});
+   </script>
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='CSS/style.css') }}">
+  <title>SmartTab</title>
+
+</head>                            
+<body>
+  
+  <div class="bar"> 
+    <div align="center" class="header-wrapper">
+      <h1 class="name">SmartTabs</h1>
+    </div> 
+  </div>
+  
+  <div class="main">
+    <div class="centerpiece">
+      <div class="holder">      
+        <form action="/translate" method="post" enctype="multipart/form-data">      
+        
+          <p class="prompt">Please uplo your file here</p>
+          <input type="file" id="file" class="file" name="file" size="40">   
+          <label for="file" class="sub">Choose a file</label>
+          <input type="submit" class="submit" value="Submit" onclick="document.getElementById('loaders').style.visibility = 'visible'">    
+          
+          <div class="spinner" id="loaders" style="visibility: hidden;">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>  
+          
+        </form> 
+      </div>
+    </div> 
+  </div>
+  
+</body>
+</html>
